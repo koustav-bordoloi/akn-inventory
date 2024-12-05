@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <th:block th:fragment="common-js-script" >
-        <!-- Bootstrap -->
-        <script th:src="@{packages/bootstrap-5.0.2/js/bootstrap.bundle.min.js}"></script>
-        <!-- jQuery -->
-        <script th:src="@{packages/jQuery/jquery-3.7.1.js}"></script>
-        <!-- Datatable -->
-        <script th:src="@{packages/DataTables/datatables.min.js}"></script>
-        <!-- toastr -->
-        <script th:src="@{packages/toastr/build/toastr.min.js}"></script>
-        <!-- fontawesome -->
-        <script th:src="@{packages/fontawesome-6.7.1/js/all.min.js}"></script>
-        <!-- axios -->
-        <script th:src="@{packages/axios/axios.min.js}"></script>        
-    </th:block>
+<th:block th:fragment="common-head">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" th:href="@{/packages/bootstrap-5.0.2/css/bootstrap.min.css}">
+    <!-- DataTable -->
+    <link rel="stylesheet" th:href="@{/packages/DataTables/datatables.min.css}">
+    <!-- fontawesome -->
+    <link rel="stylesheet" th:href="@{/packages/fontawesome-6.7.1/css/all.min.css}">
+    <!-- toastr -->
+    <link rel="stylesheet" th:href="@{/packages/toastr/build/toastr.min.css}">
+</th:block>
 
-    <th:block th:fragment="common-head">
-        <!-- Bootstrap -->
-        <link rel="stylesheet" th:href="@{packages/bootstrap-5.0.2/css/bootstrap.min.css}">
-        <!-- DataTable -->
-        <link rel="stylesheet" th:href="@{packages/DataTables/datatables.min.css}">
-        <!-- fontawesome -->
-        <link rel="stylesheet" th:href="@{packages/fontawesome-6.7.1/css/all.min.css}">
-        <!-- toastr -->
-        <link rel="stylesheet" th:href="@{packages/toastr/build/toastr.min.css}">
-    </th:block>
+<!-- COMMON FOOTER  -->
+<th:block th:fragment="common-footer">
+    <footer class="main-footer">
+        <div class="text-sm text-light text-center my-2">© <span th:text="${#dates.year(#dates.createNow())}"></span>,
+            <span class="font-thin">Assam Inland
+                Water Transport Development Society</span>. All Rights
+            Reserved.
+        </div>
+    </footer>
+</th:block>
 
-    <th:block th:fragment="navbar"></th:block>
-    <th:block th:fragment="footer"></th:block>
+<!-- COMMON JS SCRIPTS  -->
+<th:block th:fragment="common-js-scripts">
+    <!-- Bootstrap -->
+    <script th:src="@{/packages/bootstrap-5.0.2/js/bootstrap.bundle.min.js}"></script>
+    <!-- jQuery -->
+    <script th:src="@{/packages/jQuery/jquery-3.7.1.js}"></script>
+    <!-- Datatable -->
+    <script th:src="@{/packages/DataTables/datatables.min.js}"></script>
+    <!-- toastr -->
+    <script th:src="@{/packages/toastr/build/toastr.min.js}"></script>
+    <!-- fontawesome -->
+    <script th:src="@{/packages/fontawesome-6.7.1/js/all.min.js}"></script>
+    <!-- axios -->
+    <script th:src="@{/packages/axios/axios.min.js}"></script>
+</th:block>
+
 </html>

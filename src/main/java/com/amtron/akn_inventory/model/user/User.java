@@ -2,6 +2,8 @@ package com.amtron.akn_inventory.model.user;
 
 import java.util.List;
 
+import com.amtron.akn_inventory.model.common.Audit;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -24,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User extends Audit{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -35,6 +37,9 @@ public class User {
 
 	@NotBlank
 	private String password;
+
+	@NotBlank
+	private String fullName;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "users_roles", joinColumns = {

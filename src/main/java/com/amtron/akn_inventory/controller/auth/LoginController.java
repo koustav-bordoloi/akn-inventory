@@ -1,4 +1,4 @@
-package com.amtron.akn_inventory.controller.unlogged;
+package com.amtron.akn_inventory.controller.auth;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
