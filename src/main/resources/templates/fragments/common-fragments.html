@@ -3,40 +3,163 @@
 
 <th:block th:fragment="common-head">
     <!-- Bootstrap -->
-    <link rel="stylesheet" th:href="@{/packages/bootstrap-5.0.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/plugin/bootstrap-5.0.2/css/bootstrap.min.css}">
     <!-- DataTable -->
-    <link rel="stylesheet" th:href="@{/packages/DataTables/datatables.min.css}">
+    <link rel="stylesheet" th:href="@{/plugin/DataTables/datatables.min.css}">
     <!-- fontawesome -->
-    <link rel="stylesheet" th:href="@{/packages/fontawesome-6.7.1/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/plugin/fontawesome-6.7.1/css/all.min.css}">
     <!-- toastr -->
-    <link rel="stylesheet" th:href="@{/packages/toastr/build/toastr.min.css}">
+    <link rel="stylesheet" th:href="@{/plugin/toastr/build/toastr.min.css}">
+    <!-- Sweetalert2 -->
+    <link rel="stylesheet" th:href="@{/plugin/sweetalert2/sweetalert2.min.css}">
+    <!-- App.css -->
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</th:block>
+
+<!-- OFFICIAL NAVBAR -->
+<th:block th:fragment="common-navbar">
+    <header class="mb-3">
+        <nav class="navbar navbar-expand-lg py-3">
+            <div class="container-fluid px-lg-5">
+                <div class="brand-name">
+                    <img th:src="@{/images/mmc_light.svg}" class="org-logo" alt="">
+                    <a class="navbar-brand" th:href="@{/}">AKN Inventory</a>
+                </div>
+                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button> -->
+                <a class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </a>
+                <div class="collapse navbar-collapse justify-content-lg-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <!-- Admin Controls -->
+                        <!-- Home -->
+                        <a class="nav-link text-center mx-2" sec:authorize="hasRole('ROLE_ADMIN')"
+                            th:href="@{/admin}">Home</a>
+                        <div class="dropdown nav-dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a class="nav-link text-center mx-2" style="cursor: pointer;" data-bs-toggle="dropdown">
+                                Welcome, Admin <span class="ms-1"><i
+                                        class="fa-solid fa-angle-down dropdown-icon"></i></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <a class="dropdown-item d-flex justify-content-between logoutLink"
+                                    sec:authorize="isAuthenticated()">
+                                    <span>Logout</span>
+                                    <span class="ms-3"><i class="fa-solid fa-right-from-bracket"></i></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Home -->
+                        <a class="nav-link text-center mx-2" sec:authorize="hasRole('ROLE_APPLICANT')"
+                            th:href="@{/applicant}">Home</a>
+                        <!-- My Applications -->
+                        <a class="nav-link text-center mx-2" sec:authorize="hasRole('ROLE_APPLICANT')"
+                            th:href="@{/applicant/my-applications}">My Applications</a>
+                        <!-- User Controls -->
+                        <div class="dropdown nav-dropdown" sec:authorize="hasRole('ROLE_APPLICANT')">
+                            <a class="nav-link text-center mx-2" style="cursor: pointer;" data-bs-toggle="dropdown">
+                                <span th:text="@{Hi, __${#authentication.principal.fullname}__!}"></span>
+                                <span class="ms-1"><i class="fa-solid fa-angle-down dropdown-icon"></i></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <a class="dropdown-item d-flex justify-content-between logoutLink"
+                                    sec:authorize="isAuthenticated()">
+                                    <span>Logout</span>
+                                    <span class="ms-3"><i class="fa-solid fa-right-from-bracket"></i></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Login -->
+                        <a class="nav-link text-center mx-2" sec:authorize="isAnonymous()" th:href="@{/login}">
+                            Login
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="loader" style="display: none;">
+        <div class="spinner"></div>
+    </div>
 </th:block>
 
 <!-- COMMON FOOTER  -->
 <th:block th:fragment="common-footer">
     <footer class="main-footer">
-        <div class="text-sm text-light text-center my-2">© <span th:text="${#dates.year(#dates.createNow())}"></span>,
-            <span class="font-thin">Assam Inland
-                Water Transport Development Society</span>. All Rights
-            Reserved.
+        <div class="text-sm text-center my-2">© <span th:text="${#dates.year(#dates.createNow())}"></span>,
+            Assam Electronics Development Corporation Ltd. <br>
+            All Rights Reserved.
         </div>
     </footer>
 </th:block>
 
+<!-- COMMON JS -->
+<th:block th:fragment="common-js">
+    <!-- Bootstrap -->
+    <script th:src="@{/plugin/bootstrap-5.0.2/js/bootstrap.bundle.min.js}"></script>
+    <!-- jQuery -->
+    <script th:src="@{/plugin/jQuery/jquery-3.7.1.js}"></script>
+    <!-- Datatable -->
+    <script th:src="@{/plugin/DataTables/datatables.min.js}"></script>
+    <!-- toastr -->
+    <script th:src="@{/plugin/toastr/build/toastr.min.js}"></script>
+    <!-- fontawesome -->
+    <script th:src="@{/plugin/fontawesome-6.7.1/js/all.min.js}"></script>
+    <!-- axios -->
+    <script th:src="@{/plugin/axios/axios.min.js}"></script>
+    <!-- Sweetalert2 -->
+    <script th:src="@{/plugin/sweetalert2/sweetalert2.all.min.js}"></script>
+</th:block>
+
 <!-- COMMON JS SCRIPTS  -->
 <th:block th:fragment="common-js-scripts">
-    <!-- Bootstrap -->
-    <script th:src="@{/packages/bootstrap-5.0.2/js/bootstrap.bundle.min.js}"></script>
-    <!-- jQuery -->
-    <script th:src="@{/packages/jQuery/jquery-3.7.1.js}"></script>
-    <!-- Datatable -->
-    <script th:src="@{/packages/DataTables/datatables.min.js}"></script>
-    <!-- toastr -->
-    <script th:src="@{/packages/toastr/build/toastr.min.js}"></script>
-    <!-- fontawesome -->
-    <script th:src="@{/packages/fontawesome-6.7.1/js/all.min.js}"></script>
-    <!-- axios -->
-    <script th:src="@{/packages/axios/axios.min.js}"></script>
+    <script>
+        var meta = $("meta[name=ctx]");
+        var contextPath = meta.attr("href");
+    </script>
+    <!-- AXIOS Handler -->
+    <script th:src="@{/js/utility/axios-handler.js}"></script>
+    <script>
+        const swalToast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+
+        // Modal mixin configuration
+        const mySwal = Swal.mixin({
+            customClass: {
+                cancelButton: 'btn btn-outline-dark order-1 mx-1',
+                confirmButton: 'btn btn-dark order-2 mx-1',
+            },
+            buttonsStyling: false,
+        });
+
+        function showLoader() {
+
+            alert("sad")
+            document.getElementById('loader').style.display = 'block';
+        }
+
+        // function hideLoader() {
+        //     document.getElementById('loader').style.display = 'none';
+        // }
+
+
+
+    </script>
 </th:block>
 
 </html>

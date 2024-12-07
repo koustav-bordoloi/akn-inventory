@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <th:block th:replace="~{fragments/common-fragments :: common-head}"></th:block>
+    <style>
+        #loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <th:block th:replace="~{fragments/common-fragments :: common-navbar}"></th:block>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h4>Master Category</h4>
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
+                    class="fa-solid fa-plus"></i> Add New</button>
+        </div>
+        <div class="col-12 mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="categoryTable">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Category</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td>Network Cable</td>
+                                    <td class="text-center"><span class="badge bg-success rounded-pill">ACTIVE</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-outline-dark btn-sm"><i
+                                                class="fa-regular fa-pen-to-square"></i> Edit </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">2</td>
+                                    <td>Router</td>
+                                    <td class="text-center"><span class="badge bg-success rounded-pill">ACTIVE</span>
+                                    </td>
+                                    <td class="text-center"><button class="btn btn-outline-dark btn-sm"><i
+                                                class="fa-regular fa-pen-to-square"></i> Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">3</td>
+                                    <td>Modem</td>
+                                    <td class="text-center"><span
+                                            class="badge bg-secondary rounded-pill">INACTIVE</span></td>
+                                    <td class="text-center"><button class="btn btn-outline-dark btn-sm"><i
+                                                class="fa-regular fa-pen-to-square"></i> Edit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Category</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-4">
+                    <form id="categoryForm" autocomplete="off">
+                        <div class="row">
+                            <input type="text" name="id" id="id" hidden>
+                            <div class="form-group col-12">
+                                <label class="text-medium" for="name">Category</label>
+                                <input type="text" name="name" id="name" class="form-control"
+                                    placeholder="Enter Category">
+                                <small id="nameError" class="form-error"></small>
+                            </div>
+                            <div class="form-group col-12">
+                                <label class="text-medium" for="status">Status</label>
+                                <select name="status" id="status" class="form-select">
+                                    <option th:each="x,itr: ${statusList}" th:value="${x}" th:text="${x}">
+                                    </option>
+                                </select>
+                                <small id="statusError" class="form-error"></small>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark" id="saveCategoryBtn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:replace="~{fragments/common-fragments :: common-footer}"></th:block>
+</body>
+<th:block th:replace="~{fragments/common-fragments :: common-js}"></th:block>
+<th:block th:replace="~{fragments/common-fragments :: common-js-scripts}"></th:block>
+<script th:src="@{/js/admin/master-category.js}"></script>
+
+</html>

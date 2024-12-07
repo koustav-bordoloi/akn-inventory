@@ -1,20 +1,52 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
-    <title>Login</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <th:block th:replace="~{fragments/common-fragments :: common-head}"></th:block>
 </head>
+
 <body>
-    <h2>Login</h2>
-    <form th:action="@{/login}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required />
-        <br />
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
-        <br />
-        <button type="submit">Login</button>
-    </form>
-    <p th:if="${param.error}" style="color: red;">Invalid username or password.</p>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card mt-5">
+                    <div class="card-body" style="padding: 1.5rem 2rem;">
+                        <div class="text-center pb-2">
+                            <img th:src="@{/img/amtron-logo.png}" alt="AIWTDS" style="width: 4rem;">
+                            <h4 class="mt-2">AKN Inventory</h4>
+                            <p class="mb-0">Assam Electronics Development Corporation Ltd.</p>
+                        </div>
+                        <hr>
+                        <form th:action="@{/login}" method="post">
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username"
+                                        placeholder="Enter username">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="Enter password">
+                                </div>
+                                <a th:href="@{/forgot-password}" class="text-end">Forgot password?</a>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-dark btn-block mt-3">Sign in <i
+                                            class="fa-solid fa-arrow-right ms-2"></i></button>
+                                </div>
+                                <div th:if="${loginError}" class="text-center mt-2">
+                                    <span class="text-danger" th:text="${loginErrorMessage}"></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:replace="~{fragments/common-fragments :: common-footer}"></th:block>
 </body>
+
 </html>

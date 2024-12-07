@@ -1,16 +1,12 @@
 package com.amtron.akn_inventory.config;
 
 import java.io.IOException;
-import java.util.Collection;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-
-import com.amtron.akn_inventory.enums.RoleEnum;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,24 +39,24 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
 
     protected String determineTargetUrl(final Authentication authentication) {
 
-        final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        // final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
-        // If the user has multiple roles, he will be allowed to select role
-        if (authorities.size() > 1) {
-            return RoleEnum.MULTIPLE_ROLE.getTargetUrl();
-        }
+        // // If the user has multiple roles, he will be allowed to select role
+        // if (authorities.size() > 1) {
+        //     return RoleEnum.MULTIPLE_ROLE.getTargetUrl();
+        // }
 
-        // For individual role
-        for (final GrantedAuthority grantedAuthority : authorities) {
-            String authorityName = grantedAuthority.getAuthority();
-            switch (authorityName) {
-                case "ROLE_ADMIN":
-                    return RoleEnum.ROLE_ADMIN.getTargetUrl();
-                case "ROLE_PMU":
-                    return RoleEnum.ROLE_MANAGER.getTargetUrl();
-            }
-        }
-        return "/error";
+        // // For individual role
+        // for (final GrantedAuthority grantedAuthority : authorities) {
+        //     String authorityName = grantedAuthority.getAuthority();
+        //     switch (authorityName) {
+        //         case "ROLE_ADMIN":
+        //             return RoleEnum.ROLE_ADMIN.getTargetUrl();
+        //         case "ROLE_PMU":
+        //             return RoleEnum.ROLE_MANAGER.getTargetUrl();
+        //     }
+        // }
+        return "/admin";
     }
 
     protected void clearAuthenticationAttributes(HttpServletRequest request) {

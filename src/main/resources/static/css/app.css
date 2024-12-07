@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+:root {
+    --font-primary: "Nunito", sans-serif;
+    --font-secondary: "Open Sans", sans-serif;
+    --font-accent: "Lexend Mega", sans-serif;
+    --text-color: #1f2124;
+    --background: #f1f3fa;
+    --primary: #414c73;
+    --accent: #ff974b;
+    --highlight: #753100;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--background);
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.card {
+    border: none;
+}
+
+.form-group {
+    margin-bottom: 0.7rem;
+}
+
+.btn-block {
+    width: 100%;
+}
