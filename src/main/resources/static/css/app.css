@@ -34,3 +34,8 @@ header {
 .btn-block {
     width: 100%;
 }
+
+.form-error {
+    color: #d22e2e;
+    font-size: .8rem;
+}

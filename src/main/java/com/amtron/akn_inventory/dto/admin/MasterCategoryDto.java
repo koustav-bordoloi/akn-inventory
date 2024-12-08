@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 
 @Builder
-public record MasterCategoryDto(Integer id, @NotBlank(message = "Category is required.") String name, Status status) {
+public record MasterCategoryDto(Integer id,
+        @NotBlank(message = "Category name is required.") String name,
+        Status status) {
 
 }
