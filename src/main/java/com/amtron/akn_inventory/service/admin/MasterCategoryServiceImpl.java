@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.amtron.akn_inventory.dto.admin.MasterCategoryDto;
 import com.amtron.akn_inventory.enums.Status;
 import com.amtron.akn_inventory.exception.DataValidationException;
-import com.amtron.akn_inventory.mapper.MasterCategoryMapper;
+import com.amtron.akn_inventory.mapper.admin.MasterCategoryMapper;
 import com.amtron.akn_inventory.model.admin.MasterCategory;
 import com.amtron.akn_inventory.repository.admin.MasterCategoryRepository;
 

@@ -16,6 +16,9 @@ body {
     background-color: var(--background);
     min-height: 100vh;
     color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 header {

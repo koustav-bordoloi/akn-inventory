@@ -1,4 +1,4 @@
-package com.amtron.akn_inventory.mapper;
+package com.amtron.akn_inventory.mapper.admin;
 
 import java.util.List;
 

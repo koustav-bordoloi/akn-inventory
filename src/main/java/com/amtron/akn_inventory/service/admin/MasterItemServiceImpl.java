@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.amtron.akn_inventory.dto.admin.MasterItemDto;
 import com.amtron.akn_inventory.exception.DataValidationException;
-import com.amtron.akn_inventory.mapper.MasterItemMapper;
+import com.amtron.akn_inventory.mapper.admin.MasterItemMapper;
 import com.amtron.akn_inventory.model.admin.MasterCategory;
 import com.amtron.akn_inventory.model.admin.MasterItem;
 import com.amtron.akn_inventory.repository.admin.MasterItemRepository;
@@ -41,8 +41,19 @@ public class MasterItemServiceImpl implements MasterItemService {
     }
 
     @Override
+    public MasterItem getByName(String itemName) {
+        return masterItemRepository.findByName(itemName)
+                .orElseThrow(() -> new DataValidationException("Master item not found."));
+    }
+
+    @Override
     public MasterItemDto getItemDtoById(Integer id) {
         return masterItemMapper.entityToDto(getById(id));
+    }
+
+    @Override
+    public List<String> searchItems(String query) {
+        return masterItemRepository.findByNameContainingIgnoreCase(query);
     }
 
 }
