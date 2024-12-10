@@ -30,9 +30,9 @@ public class ManagerController {
         return mv;
     }
 
-    @GetMapping("/add-stock")
+    @GetMapping("/add-item-stock")
     public ModelAndView addStockPage() {
-        ModelAndView mv = new ModelAndView("manager/add-stock");
+        ModelAndView mv = new ModelAndView("manager/add-item-stock");
         return mv;
     }
 
@@ -53,7 +53,7 @@ public class ManagerController {
         return ResponseEntity.ok().body(payload);
     }
 
-    @PutMapping("/add-stock")
+    @PutMapping("/add-item-stock")
     public ResponseEntity<Payload> addStock(@Valid @RequestBody TransItemStockDto transItemStockDto) {
 
         transItemStockDto = managerService.addStock(transItemStockDto);
@@ -62,5 +62,11 @@ public class ManagerController {
                 .data(transItemStockDto)
                 .build();
         return ResponseEntity.ok().body(payload);
+    }
+
+    @GetMapping("/issue-item-stock")
+    public ModelAndView issueStockPage() {
+        ModelAndView mv = new ModelAndView("manager/issue-item-stock");
+        return mv;
     }
 }

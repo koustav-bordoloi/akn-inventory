@@ -68,41 +68,42 @@ $(() => {
 
     })
     function generateAddStockForm(itemDetails) {
-        const data = `<h5 class="mb-3">Item Details</h5>
-        <hr>
-        <form id="addStockForm">
-            <input type="text" name="itemId" id="itemId" value="${itemDetails.itemId}" hidden>
-            <div class="form-group">
-                <div class="col-12">Item Name: </div>
-                <div class="col-12 fw-bold"> ${itemDetails.itemName} </div>
-            </div>
-            <div class="form-group">
-                <div class="col-12">Item Category: </div>
-                <div class="col-12 fw-bold"> ${itemDetails.categoryName}</div>
-            </div>
-            <div class="form-group">
-                <div class="col-12">Available Qty.: </div>
-                <div class="col-12 fw-bold"> ${itemDetails.quantity}</div>
-            </div>
-            <div class="form-group col-12">
-                <label for="quantity" class="mb-2">Enter Quantity</label>
-                <div class="d-flex gap-2">
-                    <button class="btn btn-outline-dark quantity-btn" type="button"
-                        data-action="decrement" id="decrementQuantityBtn"> - </button>
-                    <div class="col-3">
-                        <input type="text" name="quantity" id="quantity"
-                            class="form-control text-center" placeholder="Quantity" min="0">
-                    </div>
-                    <button class="btn btn-outline-dark quantity-btn" type="button"
-                        data-action="increment" id="incrementQuantityBtn">+</button>
+        const data =
+            `<h5 class="mb-3">Item Details</h5>
+            <hr>
+            <form id="addStockForm">
+                <input type="text" name="itemId" id="itemId" value="${itemDetails.itemId}" hidden>
+                <div class="form-group">
+                    <div class="col-12">Item Name: </div>
+                    <div class="col-12 text-large"> ${itemDetails.itemName} </div>
                 </div>
-                <small id="quantityError" class="form-error text-danger mt-2"></small>
-            </div>
-        </form>
-        <div class="col-12">
-            <button type="submit" id="addStockBtn" class="btn btn-dark btn-block mt-2"><i
-                    class="fa-solid fa-plus me-2"></i>Add to Stock</button>
-        </div>`;
+                <div class="form-group">
+                    <div class="col-12">Item Category: </div>
+                    <div class="col-12 text-large"> ${itemDetails.categoryName}</div>
+                </div>
+                <div class="form-group">
+                    <div class="col-12">Available Qty: </div>
+                    <div class="col-12 text-large"> ${itemDetails.quantity}</div>
+                </div>
+                <div class="form-group col-12">
+                    <label for="quantity" class="mb-2">Issue Quantity: </label>
+                    <div class="d-flex gap-2">
+                        <div class="col-3">
+                            <input type="text" name="quantity" id="quantity" autocomplete="off"
+                                class="form-control text-center" placeholder="Quantity" min="0">
+                        </div>
+                        <button class="btn btn-outline-dark quantity-btn" type="button"
+                            data-action="decrement" id="decrementQuantityBtn"> - </button>
+                        <button class="btn btn-outline-dark quantity-btn" type="button"
+                            data-action="increment" id="incrementQuantityBtn">+</button>
+                    </div>
+                    <small id="quantityError" class="form-error text-danger mt-2"></small>
+                </div>
+            </form>
+            <div class="col-12">
+                <button type="submit" id="addStockBtn" class="btn btn-dark btn-block mt-2"><i
+                        class="fa-solid fa-plus me-2"></i>Add to Stock</button>
+            </div>`;
 
         $("#itemDetailsCard").html(data)
     }
@@ -120,7 +121,7 @@ $(() => {
     $(document).on('click', '#addStockBtn', () => {
         const formDataJson = formDataToJson(new FormData($("#addStockForm")[0]));
 
-        axiosInstance.put(`${apiManager}/add-stock`, formDataJson)
+        axiosInstance.put(`${apiManager}/add-item-stock`, formDataJson)
             .then(response => {
                 mySwal.fire({
                     icon: "success",

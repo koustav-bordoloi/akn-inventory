@@ -6,10 +6,13 @@ import lombok.Builder;
 
 @Builder
 public record TransItemStockDto(
-        Integer id,
-        Integer itemId,
-        String itemName,
-        String categoryName,
-        @NotNull(message = "Quantity is required.") @Positive(message = "Quntity is invalid.") Integer quantity) {
+		Integer id,
+		Integer itemId,
+		String itemName,
+		String categoryName,
+
+		@NotNull(message = "Quantity is required.") //
+		@Positive(message = "Quntity is invalid.") //
+		Integer quantity) {
 
 }

@@ -42,3 +42,15 @@ header {
     color: #d22e2e;
     font-size: .8rem;
 }
+
+.text-small {
+    font-size: .85rem;
+}
+
+.text-medium {
+    font-size: 1.25rem;
+}
+
+.text-large {
+    font-size: 1.5rem;
+}
