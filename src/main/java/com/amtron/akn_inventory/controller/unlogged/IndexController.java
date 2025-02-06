@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
     @GetMapping()
     public ModelAndView index() {
-        return new ModelAndView("unlogged/index");
+        return new ModelAndView("unlogged/login");
     }
 
 }
